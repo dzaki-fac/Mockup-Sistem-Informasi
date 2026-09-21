@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  /* UNDIP — institusional navy + putih + abu */
+  --color-navy: #000352;
+  --color-navy-deep: #00003a;
+  --color-surface-muted: #dfdfdf;
+  --color-white-20: #ffffff33;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter-next);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #000000;
+  font-family: var(--font-inter-next), "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tracking khas komponen kartu/event */
+.tracking-undip {
+  letter-spacing: 0.5px;
+}
+
+/* Blok tanggal event — terverifikasi dari HTML */
+.event-month {
+  background: #000352;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  padding: 5px;
+}
+
+.event-day {
+  background: #dfdfdf;
+  color: #000000;
+  font-weight: 600;
+  font-size: 45px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-align: center;
+  padding: 20px 5px;
+}
+
+.event-title {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 767px) {
+  .event-month {
+    font-size: 14px;
+    line-height: 19px;
+  }
+  .event-day {
+    font-size: 32px;
+    padding: 10px 5px;
+  }
+}
+
+/* Hover khas: kartu scale, tombol geser */
+.hover-angkat {
+  transition: transform 250ms ease;
+}
+.hover-angkat:hover {
+  transform: scale(1.05);
+}
+
+.tombol-geser {
+  transition: transform 250ms ease;
+}
+.tombol-geser:hover {
+  transform: translateX(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 150ms !important;
+    transition-duration: 150ms !important;
+  }
+  .hover-angkat:hover,
+  .tombol-geser:hover {
+    transform: none;
+  }
+}
