@@ -16,6 +16,7 @@ const ROLE_LABEL: Record<Role, string> = {
 const MENU: { href: string; label: string; roles: Role[] }[] = [
   { href: "/dashboard", label: "Beranda", roles: ["petugas", "pengelola", "pimpinan"] },
   { href: "/knowledge", label: "Knowledge Center", roles: ["petugas", "pengelola", "pimpinan"] },
+  { href: "/asisten", label: "AI Knowledge Assistant", roles: ["petugas"] },
   { href: "/ajukan", label: "Ajukan Knowledge", roles: ["petugas", "pengelola"] },
   { href: "/review", label: "Review & Approval", roles: ["pengelola", "pimpinan"] },
   { href: "/riwayat", label: "Riwayat", roles: ["petugas", "pengelola", "pimpinan"] },
@@ -188,6 +189,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   };
 
   const visibleMenu = MENU.filter((m) => m.roles.includes(role));
+  /* "Ajukan Knowledge" tidak tampil di topnav desktop — cukup tombol "+ Ajukan" */
+  const topMenu = visibleMenu.filter((m) => m.href !== "/ajukan");
   const unread = NOTIFICATIONS.filter((n) => n.unread).length;
 
   return (
@@ -207,7 +210,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </Link>
 
           <nav className="mx-auto hidden items-center lg:flex" aria-label="Navigasi utama">
-            {visibleMenu.map((m) => {
+            {topMenu.map((m) => {
               const active =
                 pathname === m.href ||
                 (m.href !== "/dashboard" && m.href !== "/" && pathname?.startsWith(m.href));
@@ -248,7 +251,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 aria-label={`Profil ${ROLE_LABEL[role]}, ${unread} notifikasi belum dibaca`}
                 aria-expanded={showNotif}
                 aria-haspopup="menu"
-                className="flex min-h-[44px] items-center gap-2 rounded-[5px] py-1 pl-1 pr-2 transition-colors hover:bg-white-20"
+                className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-[5px] p-1 transition-colors hover:bg-white-20"
               >
                 <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-white text-base font-bold text-navy" aria-hidden>
                   {ROLE_LABEL[role].charAt(0)}
@@ -257,9 +260,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       {unread}
                     </span>
                   )}
-                </span>
-                <span className="tracking-undip hidden text-left text-sm font-medium leading-tight md:block">
-                  {ROLE_LABEL[role]}
                 </span>
               </button>
               {showNotif && (

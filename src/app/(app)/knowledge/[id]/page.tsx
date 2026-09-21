@@ -68,6 +68,9 @@ export default async function KnowledgeDetailPage({
             <Link href="/ajukan" className="tombol-geser inline-flex min-h-[44px] items-center gap-1 rounded-[5px] border border-navy/30 px-5 text-sm font-semibold">
               Usulkan Perubahan →
             </Link>
+            <Link href={`/asisten?dokumen=${item.id}`} className="inline-flex min-h-[44px] items-center rounded-[5px] bg-navy px-5 text-sm font-semibold text-white transition-opacity hover:opacity-90">
+              Tanyakan ke AI
+            </Link>
           </div>
 
           <div className="mt-10">
