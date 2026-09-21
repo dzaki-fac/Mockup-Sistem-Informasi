@@ -31,20 +31,20 @@ export default function HeroSlider({ slides }: { slides: Knowledge[] }) {
       className="relative overflow-hidden bg-navy text-white"
     >
       <div className="relative mx-auto w-full max-w-[1200px]">
-        <div className="relative flex aspect-[16/6] min-h-[400px] items-end">
+        <div className="relative flex min-h-[320px] items-end py-10 sm:aspect-[16/6] sm:min-h-[400px] sm:py-0">
           {/* Foto latar gedung + overlay gelap */}
           <Image
             src="/foto-gedung.jpg"
             alt=""
             fill
             sizes="100vw"
-            className="object-cover"
+            className="z-0 object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/55" aria-hidden />
+          <div className="pointer-events-none absolute inset-0 z-[1] bg-black/55" aria-hidden />
           <div
             key={slide.id}
-            className="relative w-full px-4 pb-20 pt-10 sm:px-6"
+            className="relative z-10 w-full px-4 pb-24 pt-4 sm:px-6 sm:pb-20 sm:pt-10"
             aria-roledescription="slide"
             aria-label={`${idx + 1} dari ${slides.length}: ${slide.title}`}
           >
@@ -53,33 +53,35 @@ export default function HeroSlider({ slides }: { slides: Knowledge[] }) {
                 {slide.type}
               </span>
             </p>
-            <h1 className="mt-3 max-w-3xl text-3xl font-bold leading-tight sm:text-4xl lg:text-[44px] lg:leading-[1.15]">
+            <h1 className="mt-3 max-w-3xl text-2xl font-bold leading-tight sm:text-4xl lg:text-[44px] lg:leading-[1.15]">
               <span className="opacity-80">{slide.title.split(" ").slice(0, 1).join(" ")} </span>
               <Link href={`/knowledge/${slide.id}`} className="hover:underline">
                 {slide.title.split(" ").slice(1).join(" ")}
               </Link>
             </h1>
-            <p className="mt-3 max-w-2xl text-sm text-white/80 sm:text-[15px]">
+            <p className="mt-3 line-clamp-3 max-w-2xl text-sm text-white/80 sm:line-clamp-none sm:text-[15px]">
               {slide.description} — Versi {slide.version}, diperbarui {slide.updatedAt}.
             </p>
           </div>
         </div>
 
-        <div className="absolute bottom-5 right-4 flex items-center gap-2 sm:right-6">
+        <div className="absolute bottom-5 right-4 z-20 flex items-center gap-2 sm:right-6">
           <span className="tracking-undip mr-1 text-xs font-medium text-white/70" aria-hidden>
             {idx + 1} / {slides.length}
           </span>
           <button
+            type="button"
             onClick={() => go(-1)}
             aria-label="Slide sebelumnya"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/40 transition-colors hover:bg-white hover:text-navy"
+            className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/40 transition-colors hover:bg-white hover:text-navy"
           >
             <Chevron dir="prev" />
           </button>
           <button
+            type="button"
             onClick={() => go(1)}
             aria-label="Slide berikutnya"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/40 transition-colors hover:bg-white hover:text-navy"
+            className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/40 transition-colors hover:bg-white hover:text-navy"
           >
             <Chevron dir="next" />
           </button>

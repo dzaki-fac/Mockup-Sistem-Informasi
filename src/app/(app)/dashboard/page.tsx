@@ -34,7 +34,7 @@ export default function DashboardPage() {
           <p className="text-[13px] text-white/75 sm:ml-4">
             Acuan resmi petugas pada tahap pemeriksaan, verifikasi, dan validasi dokumen.
           </p>
-          <Link href="/knowledge" className="tombol-geser mt-2 inline-flex min-h-[44px] items-center gap-1 rounded-[5px] bg-white px-4 text-sm font-semibold text-navy sm:ml-auto sm:mt-0">
+          <Link href="/knowledge" className="tombol-geser mt-2 inline-flex min-h-[44px] w-full items-center justify-center gap-1 rounded-[5px] bg-white px-4 text-sm font-semibold text-navy sm:ml-auto sm:mt-0 sm:w-auto">
             Buka Knowledge Center →
           </Link>
         </div>

@@ -1,20 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const inputCls =
   "min-h-[44px] w-full rounded-[5px] border border-navy/30 bg-white px-4 text-[15px] text-black outline-none placeholder:text-black/40 focus:border-navy";
 
 export default function LoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const loginAs = (role: "petugas" | "pengelola" | "pimpinan") => {
-    window.localStorage.setItem("kms-role", role);
-    router.push("/dashboard");
+    try {
+      window.localStorage.setItem("kms-role", role);
+    } catch {
+      /* abaikan: penyimpanan diblokir (mode privat/iframe), tetap lanjut login */
+    }
+    /* full reload: tidak bergantung pada client router */
+    window.location.assign("/dashboard");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -84,7 +87,7 @@ export default function LoginPage() {
             <p className="tracking-undip text-xs font-semibold uppercase text-black/50">Pintasan demo — tanpa password</p>
             <div className="mt-2 grid gap-2">
               {([["petugas", "Petugas Pelayanan"], ["pengelola", "Pengelola KMS"], ["pimpinan", "Pimpinan / Approver"]] as const).map(([r, label]) => (
-                <button key={r} onClick={() => loginAs(r)} className="flex min-h-[44px] items-center rounded-[5px] border border-navy/30 px-4 text-left text-sm font-semibold transition-colors hover:bg-navy hover:text-white">
+                <button key={r} type="button" onClick={() => loginAs(r)} className="flex min-h-[44px] items-center rounded-[5px] border border-navy/30 px-4 text-left text-sm font-semibold transition-colors hover:bg-navy hover:text-white">
                   Masuk sebagai {label} <span aria-hidden className="ml-auto">→</span>
                 </button>
               ))}

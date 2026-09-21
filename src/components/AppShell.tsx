@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NOTIFICATIONS } from "@/lib/data";
 
 export type Role = "petugas" | "pengelola" | "pimpinan";
@@ -158,10 +158,31 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [showNotif, setShowNotif] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const profileRef = useRef<HTMLDivElement>(null);
+
+  /* Tutup popup profil saat klik di luar / tekan Escape */
+  useEffect(() => {
+    const onDown = (e: MouseEvent) => {
+      if (profileRef.current && !profileRef.current.contains(e.target as Node)) setShowNotif(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowNotif(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
 
   const changeRole = (r: Role) => {
     setRole(r);
-    window.localStorage.setItem("kms-role", r);
+    try {
+      window.localStorage.setItem("kms-role", r);
+    } catch {
+      /* abaikan bila penyimpanan diblokir */
+    }
     if (r === "petugas" && pathname === "/review") router.push("/dashboard");
     if (r === "pimpinan" && pathname === "/ajukan") router.push("/dashboard");
   };
@@ -220,8 +241,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             >
               + Ajukan
             </Link>
-            <div className="relative">
+            <div className="relative" ref={profileRef}>
               <button
+                type="button"
                 onClick={() => setShowNotif(!showNotif)}
                 aria-label={`Profil ${ROLE_LABEL[role]}, ${unread} notifikasi belum dibaca`}
                 aria-expanded={showNotif}
@@ -241,7 +263,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 </span>
               </button>
               {showNotif && (
-                <div role="menu" className="absolute right-0 z-50 mt-2 w-80 overflow-hidden rounded-[5px] bg-white text-black shadow-lg ring-1 ring-black/10">
+                <div role="menu" className="absolute right-0 z-50 mt-2 w-[min(20rem,calc(100vw-2rem))] overflow-hidden rounded-[5px] bg-white text-black shadow-lg ring-1 ring-black/10">
                   <div className="flex items-center gap-3 border-b border-surface-muted bg-surface-muted/40 px-4 py-3">
                     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy text-lg font-bold text-white" aria-hidden>
                       {ROLE_LABEL[role].charAt(0)}
