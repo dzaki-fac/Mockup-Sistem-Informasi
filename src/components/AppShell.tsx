@@ -9,7 +9,7 @@ export type Role = "petugas" | "pengelola" | "pimpinan";
 
 const ROLE_LABEL: Record<Role, string> = {
   petugas: "Petugas Pelayanan",
-  pengelola: "Pengelola KMS",
+  pengelola: "Pengelola SIPANDAI",
   pimpinan: "Pimpinan / Approver",
 };
 
@@ -199,9 +199,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {/* Bar utama: logo — menu — cari */}
       <header className="sticky top-0 z-40 bg-navy text-white">
         <div className="mx-auto flex w-full max-w-[1200px] items-center gap-4 px-4 py-3 sm:px-6">
-          <Link href="/dashboard" className="flex shrink-0 items-center" aria-label="KMS Tembalang — Beranda">
+          <Link href="/dashboard" className="flex shrink-0 items-center" aria-label="SIPANDAI — Beranda">
             <span className="leading-tight">
-              <span className="tracking-undip block text-base font-semibold">KMS TEMBALANG</span>
+              <span className="tracking-undip block text-base font-semibold">SIPANDAI</span>
               <span className="block text-xs text-white/75">Kelurahan Tembalang, Kota Semarang</span>
             </span>
           </Link>
@@ -420,7 +420,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
         <div className="bg-navy-deep">
           <p className="mx-auto w-full max-w-[1200px] px-4 py-3 text-center text-xs text-white/70 sm:px-6">
-            Copyright © Kelurahan Tembalang | 2026 — Prototype KMS, seluruh data dummy.
+            Copyright © Kelurahan Tembalang | 2026 — Prototype SIPANDAI, seluruh data dummy.
           </p>
         </div>
       </footer>

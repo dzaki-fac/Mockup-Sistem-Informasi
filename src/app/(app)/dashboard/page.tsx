@@ -29,7 +29,7 @@ export default function DashboardPage() {
       <div className="mx-auto w-full max-w-[1200px] px-4 pt-6 sm:px-6">
         <div className="flex flex-col items-start gap-1 rounded-[5px] bg-navy px-6 py-5 text-white sm:flex-row sm:items-center">
           <p className="tracking-undip text-sm font-semibold">
-            Siklus KMS: Capture → Store → Share → Apply
+            Siklus SIPANDAI: Capture → Store → Share → Apply
           </p>
           <p className="text-[13px] text-white/75 sm:ml-4">
             Acuan resmi petugas pada tahap pemeriksaan, verifikasi, dan validasi dokumen.
@@ -69,7 +69,7 @@ export default function DashboardPage() {
       {/* Pengumuman */}
       <section className="mx-auto w-full max-w-[1200px] px-4 pt-12 sm:px-6" aria-labelledby="umum-h">
         <div id="umum-h">
-          <SectionHead title="Pengumuman KMS" moreHref="/review" moreLabel="Pengumuman Lainnya" />
+          <SectionHead title="Pengumuman SIPANDAI" moreHref="/review" moreLabel="Pengumuman Lainnya" />
         </div>
         <ul className="grid gap-x-8 gap-y-4 md:grid-cols-2">
           {NOTIFICATIONS.map((n) => (
@@ -97,7 +97,7 @@ export default function DashboardPage() {
           <SectionHead title="Agenda Review" moreHref="/review" moreLabel="Lihat Semua Event" />
         </div>
         <div className="grid gap-5 md:grid-cols-2">
-          <EventCard month="September" year="2026" day="12" title="Batas review: Persyaratan SKU v1.4" desc="Pengelola KMS memeriksa kelengkapan usulan Petugas Pelayanan A sebelum diteruskan ke pimpinan." href="/review" />
+          <EventCard month="September" year="2026" day="12" title="Batas review: Persyaratan SKU v1.4" desc="Pengelola SIPANDAI memeriksa kelengkapan usulan Petugas Pelayanan A sebelum diteruskan ke pimpinan." href="/review" />
           <EventCard month="September" year="2026" day="11" title="Kurasi: Panduan KK Pendatang Baru" desc="Hasil kurasi pengalaman lapangan Petugas Pelayanan B menunggu pemeriksaan." href="/review" />
         </div>
       </section>

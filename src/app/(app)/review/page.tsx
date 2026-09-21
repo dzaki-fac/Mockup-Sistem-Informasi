@@ -14,7 +14,7 @@ export default function ReviewPage() {
       </p>
 
       <div className="mt-6 grid gap-5 md:grid-cols-2">
-        <EventCard month="September" year="2026" day={String(waiting)} title={`${waiting} pengajuan menunggu review`} desc="Perlu diperiksa kelengkapan dan kesesuaiannya oleh Pengelola KMS." href="/review/sub-01" />
+        <EventCard month="September" year="2026" day={String(waiting)} title={`${waiting} pengajuan menunggu review`} desc="Perlu diperiksa kelengkapan dan kesesuaiannya oleh Pengelola SIPANDAI." href="/review/sub-01" />
         <EventCard month="September" year="2026" day="1" title="1 pengajuan perlu revisi" desc="Dikembalikan ke pengusul untuk dilengkapi nomor regulasi acuan." href="/review/sub-03" />
       </div>
 

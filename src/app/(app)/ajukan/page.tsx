@@ -27,8 +27,8 @@ export default function AjukanPage() {
           </h1>
           <p className="mx-auto mt-2 max-w-md text-[15px] text-black/70">
             {submitted === "draft"
-              ? "Draft dapat dilanjutkan kapan saja sebelum diajukan ke Pengelola KMS."
-              : `“${title || "Usulan knowledge"}” (${type}) telah diteruskan ke Pengelola KMS.`}
+              ? "Draft dapat dilanjutkan kapan saja sebelum diajukan ke Pengelola SIPANDAI."
+              : `“${title || "Usulan knowledge"}” (${type}) telah diteruskan ke Pengelola SIPANDAI.`}
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
             <Link href="/review" className="inline-flex min-h-[44px] items-center rounded-[5px] bg-navy px-6 text-sm font-semibold text-white">

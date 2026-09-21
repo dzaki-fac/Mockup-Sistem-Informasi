@@ -140,7 +140,7 @@ export default async function PublicInfoPage({
               label: s.name,
               href: `/?layanan=${s.id}`,
               icon: "§",
-            })).concat([{ label: "KMS Internal", href: "/dashboard", icon: "≡" }])}
+            })).concat([{ label: "SIPANDAI Internal", href: "/dashboard", icon: "≡" }])}
           />
         </div>
       </main>

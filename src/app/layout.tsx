@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "KMS Pelayanan Publik — Kelurahan Tembalang",
+  title: "SIPANDAI — Sistem Informasi Pengetahuan dan Administrasi Informasi",
   description:
     "Prototype Knowledge Management System untuk mendukung Smart Governance Kelurahan Tembalang, Kota Semarang. Data dummy untuk keperluan presentasi dan usability testing.",
 };

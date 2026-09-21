@@ -52,9 +52,9 @@ export default function RiwayatPage() {
             </thead>
             <tbody>
               {[
-                ["2.1", "Pembaruan persyaratan", "Pengelola KMS", "10 Sep 2026"],
-                ["2.0", "Perubahan prosedur", "Pengelola KMS", "20 Agu 2026"],
-                ["1.0", "Versi awal", "Pengelola KMS", "1 Jul 2026"],
+                ["2.1", "Pembaruan persyaratan", "Pengelola SIPANDAI", "10 Sep 2026"],
+                ["2.0", "Perubahan prosedur", "Pengelola SIPANDAI", "20 Agu 2026"],
+                ["1.0", "Versi awal", "Pengelola SIPANDAI", "1 Jul 2026"],
               ].map(([v, c, b, d]) => (
                 <tr key={v} className="border-t border-surface-muted">
                   <td className="px-4 py-2.5 font-semibold">v{v}</td>
